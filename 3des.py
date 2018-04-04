@@ -2,8 +2,8 @@
 DES and 3DES implementation in numpy.
 
 Examples:
-python des.py --encrypt input.png cipher.3des 198241eb69d702280bc7d27868de15e27e167eb7741a2075
-python des.py --decrypt cipher.3des output.png 198241eb69d702280bc7d27868de15e27e167eb7741a2075
+python 3des.py --encrypt input.png cipher.3des 198241eb69d702280bc7d27868de15e27e167eb7741a2075
+python 3des.py --decrypt cipher.3des output.png 198241eb69d702280bc7d27868de15e27e167eb7741a2075
 '''
 
 import sys
@@ -340,9 +340,9 @@ if __name__ == '__main__':
         for dec_val in [ int(hex_char,16) for hex_char in key ]:
             key_in_bits.append( decimal2bit_array(dec_val) )
         key_in_bits = np.concatenate(key_in_bits)
-		# apply encryption
+        # apply encryption
         tri_des_enc(input_filename,output_filename,key_in_bits)
-		print('Encryption is done!')
+        print('Encryption is done!')
 
     elif sys.argv[1] == '--decrypt' and len(sys.argv) == 5:
         input_filename = sys.argv[2]
@@ -358,7 +358,7 @@ if __name__ == '__main__':
         key_in_bits = np.concatenate(key_in_bits)
         # apply decryption
         tri_des_dec(input_filename,output_filename,key_in_bits)
-		print('Decryption is done!')
+        print('Decryption is done!')
     else:
         print('Invalid arguments. Try:')
         print('--encrypt [input_filename] [output_filename] [48-hex digit key]')
